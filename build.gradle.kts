@@ -1,0 +1,26 @@
+// Root build file — applied to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://jitpack.io")
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:7.4.2")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
+        // CloudStream plugin — generates .cs3 and handles extension packaging
+        classpath("com.github.recloudstream:gradle:-SNAPSHOT")
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://jitpack.io")
+    }
+}
+
+task<Delete>("clean") {
+    delete(rootProject.buildDir)
+}
