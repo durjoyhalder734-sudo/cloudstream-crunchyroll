@@ -47,7 +47,7 @@ class CrunchyrollProvider : MainAPI() {
 
     private suspend fun ensureToken(): String {
         val now = System.currentTimeMillis() / 1000
-        if (accessToken != null && tokenExpiry > now + 60) {
+        if (accessToken != null) {
             return accessToken!!
         }
         // Attempt refresh if we have a refresh token
