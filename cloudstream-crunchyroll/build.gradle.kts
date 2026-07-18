@@ -1,25 +1,26 @@
-// use an integer for version numbers
-version = 1
+// Root build file — applied to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://jitpack.io")
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:7.4.2")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
+        // CloudStream plugin — generates .cs3 and handles extension packaging
+        classpath("com.github.recloudstream:gradle:-SNAPSHOT")
+    }
+}
 
-cloudstream {
-    language = "en"
-    // All of these properties are optional, you can safely remove them
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://jitpack.io")
+    }
+}
 
-    // description = "Lorem Ipsum"
-    authors = listOf("Replit")
-
-    /**
-     * Status int as the following:
-     * 0: Down
-     * 1: Ok
-     * 2: Slow
-     * 3: Beta only
-     * */
-    status = 1 // will be 3 if not set
-    tvTypes = listOf(
-        "AnimeMovie",
-        "Anime",
-    )
-
-    iconUrl = "https://www.crunchyroll.com/i/favicon.ico"
+task<Delete>("clean") {
+    delete(rootProject.buildDir)
 }
